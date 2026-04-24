@@ -16,12 +16,15 @@
 ## ✨ Features
 
 - 📤 Upload medical images (JPG or PNG)
+- 🩺 **Body part selector** — choose from Eye, Chest, Skin, Head, Throat, Limbs, Abdomen, or General to focus the AI on the relevant medical specialty
+- 🔬 **Specialty-aware analysis** — automatically scopes the Gemini prompt to the matching specialty (e.g. Dermatology for Skin, Ophthalmology for Eye) for more targeted results
 - 🤖 AI-based disease analysis powered by Google Gemini
 - 📋 Generates a structured report including:
   - Detailed Analysis
   - Findings Report
   - Recommendations
   - Treatment Suggestions
+- 📜 Analysis history with body part and specialty labels preserved per entry
 - ⚡ Fast and interactive UI built with Streamlit
 
 ---
@@ -29,15 +32,19 @@
 ## 🏗️ Architecture
 
 ```
+User selects body part (e.g. Skin → Dermatology)
+       ↓
 User uploads image
        ↓
-Streamlit Interface
+Streamlit Interface builds specialty-scoped system prompt
        ↓
-Gemini API processes image
+Gemini API processes image + prompt
        ↓
-AI generates response
+AI generates specialty-focused response
        ↓
-Structured output shown to user
+Structured output shown to user (with body part & specialty label)
+       ↓
+Entry saved to analysis history
 ```
 
 ---
